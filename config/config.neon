@@ -1,0 +1,3 @@
+parameters:
+    frontLayout: '../../../DefaultModule/templates/@layout.front.latte'
+    fileSystemFolder : App\Presenters\BasePresenter::getConfigData('public', 'folder', 'files')

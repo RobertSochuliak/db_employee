@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>App | {$configData['project']['name']}</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+    <meta content="Employees app" name="description"/>
+    <meta content="Robert Sochuliak" name="author"/>
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
+    <link href="{$basePath}/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+    <link href="{$basePath}/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="{$basePath}/plugins/font-awesome/5.0/css/fontawesome-all.min.css" rel="stylesheet"/>
+    <link href="{$basePath}/css/vendor/style.css" rel="stylesheet"/>
+    <link href="{$basePath}/css/vendor/style-responsive.min.css" rel="stylesheet"/>
+    <!-- ================== END BASE CSS STYLE ================== -->
+
+    <link href="{$basePath}/css/style.css" rel="stylesheet"/>
+    {include styles}
+</head>
+<body>
+<div id="page-loader" class="fade show"><span class="spinner"></span></div>
+<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+    {include 'Components/navbar.latte'}
+    {include 'Components/sidebar.latte'}
+    <div id="content" class="content">
+        {include page-header}
+        {include content}
+    </div>
+</div>
+
+<!-- ================== BEGIN BASE JS ================== -->
+<script src="{$basePath}/js/vendor/apps.min.js"></script>
+<script src="{$basePath}/plugins/jquery/jquery-3.2.1.min.js"></script>
+<script src="{$basePath}/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="{$basePath}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{$basePath}/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="{$basePath}/plugins/js-cookie/js.cookie.js"></script>
+<script src="{$basePath}/plugins/bootstrap-maxlength/bootstrap-maxlength.js"></script>
+<!-- ================== END BASE JS ================== -->
+
+<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+<script src="{$basePath}/plugins/bootstrap-sweetalert/sweetalert.min.js"></script>
+<script src="{$basePath}/js/script.js"></script>
+{include scripts}
+{*<!-- ================== END PAGE LEVEL JS ================== -->*}
+
+<script>
+    $(document).ready(function () {
+        App.init();
+    });
+</script>
+</body>
+</html>

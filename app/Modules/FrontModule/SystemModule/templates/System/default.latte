@@ -1,0 +1,67 @@
+{layout "../@layout.front.latte"}
+{block page-header}
+    {include '../Components/breadcrumb.latte', breadcrumb => $breadcrumb}
+    <h1 class="page-header">
+        Main board
+        <small></small>
+    </h1>
+{/block}
+
+{block content}
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <div class="panel panel-inverse">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                    </div>
+                    <h4 class="panel-title">Graph of the age of employees</h4>
+                </div>
+                <div class="panel-body">
+                    <div id="apex-pie-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{/block}
+
+{block scripts}
+    <script src="{$basePath}/plugins/apexcharts/apexcharts.min.js"></script>
+
+    <script>
+        var chartData = {$chartData};
+        var options = {
+            chart: {
+                height: 365,
+                type: 'pie',
+            },
+            dataLabels: {
+                dropShadow: {
+                    enabled: false,
+                    top: 1,
+                    left: 1,
+                    blur: 1,
+                    opacity: 0.45
+                }
+            },
+            stroke: { show: true, colors: ['#FFFFFF'], width: 2, dashArray: 0 },
+            colors: ['#fb5597', '#f59c1a', '#348fe2', '#00acac', '#8753de', '#00ac4c', '#3353de'],
+            labels: chartData.labels,
+            series: chartData.values,
+            title: {
+                text: 'HeatMap Chart (Single color)'
+            }
+        };
+
+        var chart = new ApexCharts(
+            document.querySelector('#apex-pie-chart'),
+            options
+        );
+
+        chart.render();
+    </script>
+{/block}
+
+{block styles}
+{/block}

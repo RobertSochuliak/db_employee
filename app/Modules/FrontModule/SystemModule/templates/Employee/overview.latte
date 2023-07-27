@@ -1,0 +1,107 @@
+{layout $layoutPath}
+{block page-header}
+    {include '../Components/breadcrumb.latte', breadcrumb => $breadcrumb}
+    <h1 class="page-header">
+        Employees overview
+        <small> list of employees </small>
+    </h1>
+{/block}
+
+{block content}
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <div class="panel panel-inverse">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a n:href=":Front:System:Employee:add" class="btn btn-xs btn-light"><i class="fa fa-plus"></i> Add employee</>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                    </div>
+                    <h4 class="panel-title">Employees overview</h4>
+                </div>
+                <div class="panel-body">
+                    <table id="employee-table" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            {foreach $employeesStructure as $structure}
+                            {if $structure->table_view}
+                                <th>{$structure->name}</th>
+                            {/if}
+                            {/foreach}
+                            <th style="width: 35px;" class="sorting_disable">Action</th>
+                        </tr>
+                        </thead>
+                        {dump}
+                        <tbody class="data-employee">
+                            {foreach $employeesData as $employee}
+                                <tr class="even" data-id="{$employee->id}">
+                                    {foreach $employeesStructure as $key => $structure}
+                                    {if $structure->table_view}
+                                        {if $structure->type == 'date'}
+                                            <td>{date('d.m.Y H:i:s', strtotime($employee->$key))}</strong></td>
+                                        {else}
+                                            <td>{$employee->$key}</td>
+                                        {/if}
+                                    {/if}
+                                    {/foreach}
+                                    <td>
+                                        <div class="table-row-nav">
+                                            <a title="Upraviť" target="_self" n:href="Employee:edit $employee->id->__toString()"><i class="fas fa-edit fa-sm"></i></a>
+                                            <a title="Odstránit" class="action-delete" n:href="deleteEmployee! $employee->id->__toString()"><i class="fas fa-trash-alt fa-sm"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{/block}
+
+{block scripts}
+    <script src="{$basePath}/plugins/DataTables/media/js/jquery.dataTables.js"></script>
+    <script src="{$basePath}/plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
+    <script src="{$basePath}/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+    <script>
+        var editable = true;
+        $(document).ready(function (){
+            $(document).on("click", ".action-delete", function (event) {
+                event.preventDefault();
+                sendRequestQuestion(
+                    "Do you wish to delete the employee?",
+                    "Yes",
+                    "No",
+                    function () {
+                        let url = event.target.closest('a').href;
+                        let data = null;
+
+                        sendRequest(url, 'GET', data,
+                            {'title': 'Done', 'desc': 'The employee has been deleted'},
+                            {'title': 'Error', 'desc': 'Failed to delete employee'},
+                            function () {
+                                event.target.closest('tr').remove();
+                            });
+                    });
+            });
+
+            if ($('#employee-table').length !== 0) {
+                var oTable = $('#employee-table').DataTable({
+                    responsive: true,
+                    pageLength: 100,
+                    columnDefs: [
+                        { type: "natural", targets: 0 },
+                        { type: "string", targets: [1,2]},
+                        { type: "number", targets: 3 },
+                    ],
+                });
+            }
+        });
+    </script>
+{/block}
+
+{block styles}
+    <link href="{$basePath}/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet"/>
+    <link href="{$basePath}/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet"/>
+{/block}

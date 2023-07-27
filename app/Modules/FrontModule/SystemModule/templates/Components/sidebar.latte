@@ -1,0 +1,25 @@
+<div id="sidebar" class="sidebar">
+    <div data-scrollbar="true" data-height="100%">
+        <ul class="nav">
+            <li class="nav-header">Admin</li>
+            <li n:class="$presenter->isLinkCurrent(':Front:System:System:*') ? 'active has-sub' : 'has-sub'">
+                <a n:href=":Front:System:System:default"><i class="fad fa-project-diagram"></i><span>Dashboard</span></a>
+            </li>
+            <li n:class="$presenter->isLinkCurrent(':Front:System:Employee:*') ? 'active has-sub' : 'has-sub'">
+                <a href="javascript:;"><b class="caret pull-right"></b><i class="fa fa-users"></i><span>Employees</span></a>
+                <ul class="sub-menu">
+                    <li n:class="$presenter->isLinkCurrent(':Front:System:Employee:overview') ? 'active'">
+                        <a n:href=":Front:System:Employee:overview">Overview</a>
+                    </li>
+{*                    <li n:class="$presenter->isLinkCurrent(':Front:System:Employee:add') ? 'active'">*}
+{*                        <a n:href=":Front:System:Employee:add">Add</a>*}
+{*                    </li>*}
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="sidebar-bg"></div>

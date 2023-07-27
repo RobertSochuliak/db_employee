@@ -1,0 +1,267 @@
+* {
+    outline: unset;
+}
+
+button {
+    outline: #fff!important;
+}
+
+.text-wrap {
+    white-space: nowrap;
+}
+
+.fa {
+    cursor: pointer;
+}
+
+.btn-right {
+    float: right;
+}
+
+.btn-left {
+    float: left;
+}
+
+.hide {
+    display: none;
+}
+
+.build {
+    bottom: 10px;
+    left: 20px;
+    color: #a2a2a2;
+    font-size: 10px;
+}
+
+/*LABELS*/
+
+.label-done {
+    background-color: #00b300;
+}
+
+.label-inprogress {
+    background-color: #ffa500;
+}
+
+.label-deadline-false {
+    color: #ff0000;
+    font-weight: 900;
+    position: relative;
+}
+
+.label-deadline-false i {
+    color: #ff0000;
+    margin-left: 10px;
+    font-size: 15px;
+    top: 1px;
+    position: absolute;
+}
+
+.label-circle{
+    width: 20px;
+    height: 20px;
+    padding: 5px 0px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.label-bordered{
+    border: 1px solid #ddd;
+}
+
+.label-icon{
+    font-size: 19px;
+    padding: 0px 0px;
+}
+
+.label-box span{
+    float: left;
+    margin-right: 3px;
+}
+
+.summary {
+    float: right;
+}
+
+.summary-box {
+    border-top: 2px solid #ddd;
+    padding: 11px 20px;
+}
+
+.summary-box-count, .summary-box-price {
+    font-weight: 600;
+    color: #000;
+    font-size: 13px;
+}
+
+.summary-box-price span, .summary-box-count span {
+    font-weight: 400;
+    color: #252b30;
+    font-size: 12px;
+}
+
+.visible-on {
+    color: green;
+}
+
+.status-on {
+    color: #ffa500;
+}
+
+.visible-off {
+    color: red;
+}
+
+.status-off {
+    color: green;
+}
+
+.visible-tab-on, .visible-tab-off {
+    display: block;
+}
+
+.visible-tab-on.close, .visible-tab-off.close {
+    display: none;
+}
+
+.function-panel {
+    padding-top: 18px;
+}
+
+/******************* DATATABLE ******************/
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background: #252a31 !important;
+    border-color: #000000 !important;
+    color: #fff;
+}
+
+.slimScrollDiv tbody tr {
+    cursor: pointer;
+}
+
+.slimScrollDiv tbody tr:hover {
+    color: #252a315e;
+}
+
+.dataTable  > thead > tr > th:last-child {
+    max-width: 150px;
+    text-align: center;
+}
+
+.dataTable td {
+    position: relative;
+}
+
+.table-row-nav a{
+    float: left;
+    font-size: 20px;
+    line-height: 20px;
+    padding-right: 3px;
+    padding-left: 3px;
+    color: #000 !important;
+}
+
+.table-row-nav a:hover {
+    color: #000000a6;
+}
+
+.table-row-nav a.center-row-icon{
+    position: absolute;
+    right: 3px;
+    bottom: 4px;
+}
+
+.table-detail {
+    width: auto;
+}
+
+.table-detail tbody > tr > td:last-child {
+    text-align: left;
+}
+
+.table-detail tbody > tr > td a {
+    font-size: 12px;
+    text-decoration: none !important;
+}
+
+.table-detail.table.table-profile > tbody > tr > td.field {
+    width: 200px;
+}
+
+#data-table-find-product.table.table-bordered.dataTable tbody tr td {
+    white-space: nowrap;
+}
+
+#data-table-find-product.table.table-bordered.dataTable tbody tr:first-child td {
+    white-space: nowrap;
+}
+
+#data-table-find-product.table.table-bordered.dataTable tbody tr td:nth-child(2) {
+    white-space: normal;
+}
+
+#data-table-find-product.table.table-bordered.dataTable tbody tr td {
+    position: relative;
+    /*white-space: nowrap;*/
+}
+
+.table td.tab-panel {
+    white-space: nowrap;
+}
+
+.table td.tab-panel .label{
+    margin-right: 3px;
+}
+
+.table td.sortable-key{
+    cursor: all-scroll;
+}
+
+/******************* PANEL ******************/
+
+.disable-panel {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    height: calc(100% - 125px);
+    width: calc(100% - 20px);
+    background-color: rgba(255, 0, 0, 0.22);
+    z-index: 30;
+}
+
+/******************* FORM ******************/
+
+.form-group {
+    position: relative;
+}
+
+.form-group-visibility span {
+    display: block;
+}
+
+/******************* STATISTICS ******************/
+
+.totalTableRow {
+    color: black;
+    font-weight: 900;
+    background-color: #eaeaea;
+}
+
+.table-statistic tr > td:last-child {
+    text-align: right;
+}
+
+.profile-photo{
+    padding: 9px 10px;
+    border-radius: 50%;
+    font-size: 14px;
+    color: #fff;
+    background: #333;
+    margin-right: 5px;
+}
+
+.sidebar-profile-photo {
+    position: relative;
+    margin-bottom: 10px;
+}

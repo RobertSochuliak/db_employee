@@ -1,0 +1,85 @@
+{layout $layoutPath}
+{block page-header}
+    {include '../Components/breadcrumb.latte', breadcrumb => $breadcrumb}
+    <h1 class="page-header">
+        Edit employee
+        <small>edit exist employee</small>
+    </h1>
+{/block}
+
+{block content}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default"
+                           data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning"
+                           data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                    </div>
+                    <h4 class="panel-title">Edit employee</h4>
+                </div>
+                <div class="panel-body">
+                    <form id="updateEmployee" class="form-horizontal" data-employeeId="{$employeeData->id}">
+                        {foreach $employeesStructure as $key => $value}
+                            {if $value->edit_view && $value->type != 'option'}
+                                <div class="form-group">
+                                    <label>{$value->name}</label>
+                                    <input name="{$key}" type="{$value->type}" class="form-control"
+                                           placeholder="{$value->name}" value="{$employeeData->$key}"
+                                           {if $value->required}required{/if}/>
+                                </div>
+                            {elseif $value->edit_view && $value->type == 'option'}
+                                <div class="form-group">
+                                    <label>{$value->name}</label>
+                                    <select name="{$key}" class="form-control">
+                                        {foreach $value->option as $title}
+                                            <option value="{$title}" {if $title == $employeeData->$key} selected{/if}>{$title}</option>
+                                        {/foreach}
+                                    </select>
+                                </div>
+                            {/if}
+                        {/foreach}
+                        <div class="form-group">
+                            <button name="send" type="submit" class="btn btn-inverse btn-right">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{/block}
+
+{block scripts}
+    <script>
+        $(document).ready(function () {
+            $("#updateEmployee").submit(function (event) {
+                event.preventDefault();
+                var url = document.location.origin + '/' + basePath + '/employee/add?do=updateEmployee';
+                var data = getFormData($(this).closest('form'));
+                data = setData(data);
+                sendRequest(
+                    url,
+                    'POST',
+                    data,
+                    {'title': 'Done', 'desc': 'Employee modified', 'callback': showOverview},
+                    {'title': 'Error', 'desc': 'The employee could not be edited'},
+                );
+            });
+        });
+
+        function showOverview() {
+            window.location = window.location.origin + '/employee/overview';
+        }
+
+        function setData(data) {
+            data.id = $('form#updateEmployee').attr("data-employeeId")
+            return data;
+        }
+    </script>
+{/block}
+
+{block styles}
+
+{/block}

@@ -1,0 +1,11 @@
+{
+  "private": {
+  },
+  "public": {
+    "project": {
+      "name": "Employee database app"
+    },
+    "version": "1.0",
+    "favicon": ""
+  }
+}

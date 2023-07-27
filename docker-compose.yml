@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  php-apache-environment:
+    container_name: php-apache
+    image: 'dockette/web:php-81'
+    volumes:
+      - '.:/srv'
+    ports:
+      - 8000:80

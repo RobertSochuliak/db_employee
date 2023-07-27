@@ -1,0 +1,7 @@
+<ol class="breadcrumb pull-right">
+    <li class="breadcrumb-item"><a n:href="$breadcrumb['homePath']">{$breadcrumb['homeName']}</a></li>
+    {if isset($breadcrumb['baseName'])}
+        <li class="breadcrumb-item"><a n:href="$breadcrumb['basePath']">{$breadcrumb['baseName']}</a></li>
+    {/if}
+    <li class="breadcrumb-item active">{$breadcrumb['actualName']}</li>
+</ol>

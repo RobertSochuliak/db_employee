@@ -1,0 +1,48 @@
+{
+  "first_name": {
+    "type": "text",
+    "name": "First name",
+    "table_view": true,
+    "edit_view": true,
+    "required": true
+  },
+  "last_name": {
+    "type": "text",
+    "name": "Last name",
+    "table_view": true,
+    "edit_view": true,
+    "required": true
+  },
+  "gender": {
+    "type": "option",
+    "name": "Gender",
+    "option": {
+      "male": "Male",
+      "female": "Female"
+    },
+    "table_view": true,
+    "edit_view": true,
+    "required": false
+  },
+  "age": {
+    "type": "number",
+    "name": "Age",
+    "table_view": true,
+    "edit_view": true,
+    "required": false
+  },
+  "created_at": {
+    "type": "date",
+    "name": "Created at",
+    "table_view": true,
+    "edit_view": false,
+    "required": false
+  },
+  "updated_at": {
+    "type": "date",
+    "name": "Updated at",
+    "table_view": true,
+    "edit_view": false,
+    "required": false
+  }
+}
