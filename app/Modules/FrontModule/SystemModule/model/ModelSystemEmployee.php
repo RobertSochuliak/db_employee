@@ -18,8 +18,8 @@ class ModelSystemEmployee
      */
     public function __construct()
     {
-        $this->xmlPath = "/srv/app/Files/employees.xml";
-        $this->structurePath = "/srv/app/Files/employeeStructure.json";
+        $this->xmlPath = dirname(dirname(dirname(dirname(__DIR__)))) . "/Files/employees.xml";
+        $this->structurePath = dirname(dirname(dirname(dirname(__DIR__)))) . "/Files/employeeStructure.json";
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -91,8 +91,8 @@ class ModelSystemEmployee
 
     private function loadXML()
     {
-        $xmlFilePath = $this->xmlPath;
-        $xmlString = simplexml_load_file($xmlFilePath);
+        $xml = file_get_contents($this->xmlPath);
+        $xmlString = simplexml_load_string($xml);
 
         return $xmlString;
     }
